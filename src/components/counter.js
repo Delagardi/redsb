@@ -26,17 +26,29 @@ const mapStateToProps = (state) => {
   }
 }
 
+// Variant 1
 const mapDispatchToProps = (dispatch) => {
   const { inc, dec, rnd } = bindActionCreators(actions, dispatch);
 
   return {
     inc,
     dec,
-    rnd: () => {
-      const randomValue = Math.floor(Math.random()*10);
-      rnd(randomValue);
-    }
+    rnd
   }
 }
 
 export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+// Variant 2
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators(actions, dispatch);
+// }
+
+//export default connect(mapStateToProps, mapDispatchToProps)(Counter);
+
+// Variant 3
+// const mapDispatchToProps = (dispatch) => {
+//   return bindActionCreators(actions, dispatch);
+// }
+
+//export default connect(mapStateToProps, actions)(Counter);
